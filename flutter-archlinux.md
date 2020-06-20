@@ -12,7 +12,9 @@ sudo setfacl -d -m g:android-sdk:rwX /opt/android-sdk
 
 relog
 
-avdmanager create avd -n "someName" -k "system-images;android-29;default;x86_64"
+avdmanager list device <--- get id of device you want to emulate (phone, tablet, tv etc)
+
+avdmanager create avd -n "someName, i.e. tablet" -k "system-images;android-29;default;x86_64" -d <id, i.e 34>
 emulator @someName
 
 flutter doctor --android-licenses
