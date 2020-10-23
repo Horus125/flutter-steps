@@ -1,17 +1,25 @@
 ```bash
+# linux desktop
+yay -S flutter-dev
+
+sudo gpasswd -a <user> flutterusers
+source /etc/profile
+newgrp flutterusers
+flutter config --enable-linux-desktop
+
+# android
 yay -S flutter android-sdk android-sdk-platform-tools android-sdk-build-tools android-platform android-emulator android-x86-64-system-image 
 
-sudo groupadd flutterusers
 sudo gpasswd -a <user> flutterusers
-sudo chown -R :flutterusers /opt/flutter
-sudo chmod -R g+w /opt/flutter/
 
 sudo groupadd android-sdk
 sudo gpasswd -a <user> android-sdk
 sudo setfacl -R -m g:android-sdk:rwx /opt/android-sdk
 sudo setfacl -d -m g:android-sdk:rwX /opt/android-sdk
 
-#relog
+source /etc/profile
+newgrp flutterusers
+newgrp android-sdk
 
 avdmanager list device <--- get id of device you want to emulate (phone, tablet, tv etc)
 
